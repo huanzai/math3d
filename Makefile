@@ -21,6 +21,7 @@ all: $(LUA_TARGET) $(MATH3D_TARGET)
 	$(CC) -c $(SHARED) $(CFLAGS) -I$(LUA_INC) $(BUILD_CFLAGS) -o $@ $<
 
 $(LUA_TARGET): 
+	git submodule update --init
 	cd 3rd/lua && make linux
 $(MATH3D_TARGET): $(MATH3D_OBJS)
 	$(CC) $(CFLAGS) -I$(LUA_INC) $(SHARED) $^ -o $@
